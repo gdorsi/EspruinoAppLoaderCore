@@ -7,6 +7,7 @@
     "eslint": "7.1.0"
   },
   "scripts": {
-    "test": "eslint ./lib ./js"
+    "test": "eslint ./lib ./js",
+    "start": "npx servor .. preact.html --reload"
   }
 }

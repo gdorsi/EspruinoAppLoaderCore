@@ -1,0 +1,384 @@
+:root {
+  --primary-color: #5755d9;
+  --shadow-color: #cecdf4;
+  --primary-light-color: #ebebfa;
+  --font:  "Lato", sans-serif;
+  --title-font: "Nunito", sans-serif;
+}
+
+button,
+label,
+input,
+a {
+  all: unset;
+}
+
+a:hover,
+a:visited,
+a:focus {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+html {
+  font-family: var(--font);
+  font-size: 12px;
+  overflow-y: scroll;
+}
+
+body {
+  font-size: 1.2rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.hidden {
+  display: none;
+}
+
+.AppList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.AppCard {
+  width: 309px;
+  height: 264px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid var(--shadow-color);
+  border-radius: 1rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.AppCard:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0px 0.5rem 0px var(--shadow-color);
+}
+
+.AppCard__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.AppCard__avatar {
+  width: 48px;
+  height: 48px;
+}
+
+.AppCard__actions {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.AppCard__main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 1.5rem 0;
+  color: #41414E;
+  cursor: pointer;
+}
+
+.AppCard__title {
+  font-family: var(--title-font);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: black;
+}
+
+.AppDetail {
+  display: flex;
+  flex-direction: column;
+  padding: 0 3rem;
+}
+
+.AppDetail__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.AppDetail__avatar {
+  width: 132px;
+  height: 132px;
+  border: 2px var(--primary-light-color) solid;
+  border-radius: 1rem;
+}
+
+.AppDetail__title {
+  font-family: var(--title-font);
+  font-weight: 600;
+  font-size: 2rem;
+  display: flex;
+  align-items: flex-end;
+  line-height: 1;
+}
+
+.AppDetail__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  gap: 1.5rem;
+}
+
+.AppDetail__info > * {
+  display: flex;
+  gap: .5rem;
+}
+
+.AppDetail__description {
+  color: #41414E;
+  font-size: 1.4rem;
+  margin: 1.5rem 0;
+}
+
+.AppFilters {
+  padding: 18px 24px;
+  display: flex;
+}
+
+.AppFilters__filters {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.AppVersion {
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.Button {
+  cursor: pointer;
+  padding: 0.85rem 1rem;
+  border-radius: .5rem;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  gap: 0.5em;
+}
+
+.Button .Icon path {
+  fill: #fff;
+}
+
+.Button--primary {
+  border: 1px solid var(--primary-color);
+  background: var(--primary-color);
+  color:  white;
+}
+
+.Button--secondary {
+  border: 1px solid var(--primary-light-color);
+  color: var(--primary-color);
+  background: var(--primary-light-color);
+}
+
+.Button--active {
+  color: var(--primary-color);
+  background: white;
+}
+
+.Button--active .Icon path {
+  fill: var(--primary-color);
+}
+
+.Button--rounded {
+  border-radius: 100%;
+  padding: 0.5rem;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.Button--light {
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.Chip {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--primary-light-color);
+  border-radius: 2rem;
+  color: var(--primary-color);
+}
+
+.Chip--active {
+  color: var(--primary-light-color);
+  background: var(--primary-color);
+}
+
+.Chip--interactive {
+  cursor: pointer;
+}
+
+.Chip--interactive:hover {
+  background: var(--primary-light-color);
+}
+
+.Header {
+  background: var(--primary-color);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+}
+
+.Header__actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.Header__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.Header__search {
+  display: inline-flex;
+  align-items: center;
+  background: #2c2ac0;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  flex-grow: 1;
+  gap: .5rem;
+}
+
+.Header__search input {
+  flex-grow: 1;
+  color: white;
+}
+
+.Header__search input::placeholder {
+  color: var(--shadow-color);
+}
+
+.Icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.Icon--small {
+  width: 1em;
+  height: 1em;
+}
+
+.Icon path {
+  fill: transparent;
+}
+
+.Loader {
+  position: relative;
+  font-size: 1.5em;
+  border-radius: 1em;
+  width: 1em;
+  height: 1em;
+  border: 0.2em solid rgba(255, 255, 255, 0.2);
+  border-left-color: white;
+  animation: loader 1.1s infinite linear;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.Modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+
+}
+
+.Modal__overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: default;
+  background: rgba(247, 248, 249, 0.75);
+  z-index: -1;
+}
+
+.Modal__content {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(48,55,66,.3);
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: 100%;
+  min-height: 50vh;
+
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.Modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.Modal__title {
+  font-size: 1.5rem;
+  padding: .5rem 0;
+}
+
+.Modal__body {
+  flex-grow: 1;
+}
+
+.ToastContainer {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.Toast {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--primary-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

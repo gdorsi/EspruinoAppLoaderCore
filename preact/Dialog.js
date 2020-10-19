@@ -1,10 +1,6 @@
 import { html } from "./preact.js";
 import { createPortal } from "./preact.js";
-import {
-  useEffect,
-  useRef,
-  useState,
-} from "./preact.js";
+import { useEffect, useRef, useState } from "./preact.js";
 import { Button } from "./Button.js";
 import { IconClose } from "./Icons.js";
 
@@ -14,7 +10,7 @@ function getFocusableElements(el) {
   );
 }
 
-export function Dialog({ header, body, footer, onClose }) {
+export function Dialog({ children, header, onClose }) {
   const container = document.getElementById("modals");
 
   function handleClose(evt) {
@@ -42,7 +38,7 @@ export function Dialog({ header, body, footer, onClose }) {
     const focusedElBeforeOpen = document.activeElement;
 
     const focusableElements = getFocusableElements(
-      ref.current.querySelector(".Modal__content")
+      ref.current.querySelector(".Dialog__content")
     );
 
     //The close button is focused only when it is the only focusable element
@@ -62,7 +58,7 @@ export function Dialog({ header, body, footer, onClose }) {
       if (code !== "Tab" && which !== 9) return;
 
       const focusableElements = getFocusableElements(
-        ref.current.querySelector(".Modal__content")
+        ref.current.querySelector(".Dialog__content")
       );
 
       if (focusableElements.length === 1) {
@@ -95,24 +91,21 @@ export function Dialog({ header, body, footer, onClose }) {
 
   return createPortal(
     html`
-      <div role="dialog" class="Modal" ref=${ref}>
+      <div role="dialog" class="Dialog" ref=${ref}>
         <a
           href="#close"
-          class="Modal__overlay"
+          class="Dialog__overlay"
           aria-label="Close"
           onClick=${handleClose}
         ></a>
-        <div class="Modal__content">
-          <div class="Modal__header">
-            <div class="Modal__title">${header}</div>
+        <div class="Dialog__content">
+          <div class="Dialog__close">
             <${Button} secondary rounded label="Close" onClick=${handleClose}>
               <${IconClose} />
             <//>
           </div>
-          <div class="Modal__body">
-            ${body}
-          </div>
-          ${footer && html` <div class="modal-footer">${footer}</div> `}
+          ${header}
+          <div class="Dialog__body">${children}</div>
         </div>
       </div>
     `,
@@ -122,15 +115,12 @@ export function Dialog({ header, body, footer, onClose }) {
 
 export function Confirm({ header, body, onConfirm, onClose }) {
   return html`
-    <${Dialog}
-      header=${header}
-      body=${body}
-      onClose=${onClose}
-      footer=${html`
-        <button class="btn btn-primary" onClick=${onConfirm}>Yes</button>
-        <button class="btn" onClick=${onClose}>No</button>
-      `}
-    />
+    <${Dialog} header=${header} onClose=${onClose}>
+       ${body}
+
+      <button class="btn btn-primary" onClick=${onConfirm}>Yes</button>
+      <button class="btn" onClick=${onClose}>No</button>
+    <//>
   `;
 }
 

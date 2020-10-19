@@ -24,7 +24,7 @@ export function AppReadmeDialog({ onClose, app }) {
     <${Dialog}
       onClose=${onClose}
       header=${app.name}
-      body=${html`<${HtmlBlock} html=${contents} />`}
+      children=${html`<${HtmlBlock} html=${contents} />`}
     />
   `;
 }

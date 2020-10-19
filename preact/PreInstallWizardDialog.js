@@ -38,7 +38,7 @@ export function PreInstallWizardDialog({ onClose, onConfirm, app }) {
     <${Dialog}
       onClose=${onClose}
       header=${app.name}
-      body=${html`<iframe
+      children=${html`<iframe
         src="apps/${app.id}/${app.custom}"
         style="width:100%;min-height:50vh;border:0px;"
         ref=${ref}

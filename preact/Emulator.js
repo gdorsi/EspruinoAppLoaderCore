@@ -19,7 +19,7 @@ export function EmulatorDialog({ onClose, app }) {
     <${Dialog}
       onClose=${onClose}
       header=${app.name}
-      body=${html`<iframe
+      children=${html`<iframe
         src=${getEmulatorURL(app)}
         style="width: 264px;height: 244px;border:0px;"
       ></iframe>`}

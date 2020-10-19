@@ -24,7 +24,10 @@ export function AppCard({ app }) {
   const { description, mainCategory, avatar, canUpdate, appInstalled } = app;
 
   function handleClick(evt) {
-    if (evt.defaultPrevented) return;
+    // Someone blocked the navigation
+    if (evt.defaultPrevented) {
+      return;
+    }
 
     detailDialog.show();
   }
@@ -40,7 +43,7 @@ export function AppCard({ app }) {
     <${HtmlBlock} as="div" html="${description}" />
     <footer class="AppCard__footer">
       <${Chip}>#${mainCategory}<//>
-      <div class="AppCard__actions">
+      <div class="AppCard__actions" onClick=${(evt) => evt.preventDefault()}>
         ${canUpdate &&
         html`<${Button} primary active onClick=${() => installer.update(app)}>
           Update

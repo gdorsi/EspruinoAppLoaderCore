@@ -26,7 +26,10 @@ export function AppDetail({ onClose, app }) {
     <header class="AppDetail__header">
       <img class="AppDetail__avatar" src=${avatar} alt=${app.name} />
       <div class="AppDetail__info">
-        <div class="AppDetail__title">${app.name} <${AppVersion} app=${app} /></div>
+        <div class="AppDetail__title">
+          <div>${app.name}</div>
+          <${AppVersion} app=${app} />
+        </div>
         <div>
           ${categories.map(
             (category) => html`<${Chip} key=${category}>#${category}<//>`
@@ -85,5 +88,5 @@ export function AppDetail({ onClose, app }) {
     html`<${AppReadmeDialog} app=${app} onClose=${readmePrompt.onClose} />`}
   </article> `;
 
-  return html` <${Dialog} onClose=${onClose} body=${body} /> `;
+  return html` <${Dialog} onClose=${onClose}>${body}<//> `;
 }

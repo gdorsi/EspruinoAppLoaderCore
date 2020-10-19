@@ -23,18 +23,22 @@ export function AppCard({ app }) {
 
   const { description, mainCategory, avatar, canUpdate, appInstalled } = app;
 
-  return html`<article class="AppCard">
-    <header class="AppCard__content" onClick=${detailDialog.show}>
+  function handleClick(evt) {
+    if (evt.defaultPrevented) return;
+
+    detailDialog.show();
+  }
+
+  return html`<article class="AppCard" onClick=${handleClick}>
+    <header>
       <img class="AppCard__avatar" src=${avatar} alt=${app.name} />
       <div class="AppCard__actions">
         <button><${IconHeart} /></button>
       </div>
     </header>
-    <main class="AppCard__main" onClick=${detailDialog.show}>
-      <div class="AppCard__title">${app.name} <${AppVersion} app=${app} /></div>
-      <${HtmlBlock} as="div" html="${description}" />
-    </main>
-    <footer class="AppCard__content">
+    <div class="AppCard__title">${app.name} <${AppVersion} app=${app} /></div>
+    <${HtmlBlock} as="div" html="${description}" />
+    <footer class="AppCard__footer">
       <${Chip}>#${mainCategory}<//>
       <div class="AppCard__actions">
         ${canUpdate &&

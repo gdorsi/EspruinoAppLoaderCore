@@ -104,8 +104,10 @@ export function Dialog({ children, header, onClose }) {
               <${IconClose} />
             <//>
           </div>
-          ${header}
-          <div class="Dialog__body">${children}</div>
+          <div class="Dialog__body">
+            ${header && html`<div class="Dialog__title">${header}</div>`}
+            ${children}
+          </div>
         </div>
       </div>
     `,
@@ -116,7 +118,7 @@ export function Dialog({ children, header, onClose }) {
 export function Confirm({ header, body, onConfirm, onClose }) {
   return html`
     <${Dialog} header=${header} onClose=${onClose}>
-       ${body}
+      ${body}
 
       <button class="btn btn-primary" onClick=${onConfirm}>Yes</button>
       <button class="btn" onClick=${onClose}>No</button>

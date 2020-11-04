@@ -15,7 +15,7 @@ window.Const = {
 };
 
 function Main() {
-  const activeTab = 'library'; //TODO Router
+  const activeTab = "library"; //TODO Router
 
   return html`<${Header} />
     <${HttpsBanner} />
@@ -23,13 +23,11 @@ function Main() {
       <${Toast} />
       <${ProgressBar} />
     </div>
-    <div class="container bangle-tab">
-      ${activeTab === "library"
-        ? html`<${AppsLibrary} />`
-        : activeTab === "myapps"
-        ? html`<${InstalledApps} />`
-        : html`<${About} />`}
-    </div>`;
+    ${activeTab === "library"
+      ? html`<${AppsLibrary} />`
+      : activeTab === "myapps"
+      ? html`<${InstalledApps} />`
+      : html`<${About} />`} `;
 }
 
 render(html`<${Main} />`, document.querySelector("#root"));

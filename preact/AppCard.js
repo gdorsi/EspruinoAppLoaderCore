@@ -33,10 +33,10 @@ export function AppCard({ app }) {
   }
 
   return html`<article class="AppCard" onClick=${handleClick}>
-    <header>
+    <header class="AppCard__header">
       <img class="AppCard__avatar" src=${avatar} alt=${app.name} />
       <div class="AppCard__actions">
-        <button><${IconHeart} /></button>
+        <button class="Button Button--rounded Button--active"><${IconHeart} /></button>
       </div>
     </header>
     <div class="AppCard__title">${app.name} <${AppVersion} app=${app} /></div>

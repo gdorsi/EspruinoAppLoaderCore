@@ -29,7 +29,7 @@
 }
 
 *:focus-visible {
-  outline: black auto 2px;
+  outline: black solid 2px;
 }
 
 button,

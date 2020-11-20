@@ -1,10 +1,9 @@
 import { html } from "./preact.js";
 import { marked } from "./marked.js";
 import { useEffect, useState } from "./preact.js";
-import { Dialog } from "./Dialog.js";
 import { HtmlBlock } from "./HtmlBlock.js";
 
-export function AppReadmeDialog({ onClose, app }) {
+export function AppReadme({ app }) {
   const [contents, setContents] = useState(null);
 
   const appPath = `apps/${app.id}/`;
@@ -20,11 +19,5 @@ export function AppReadmeDialog({ onClose, app }) {
 
   if (contents === null) return null;
 
-  return html`
-    <${Dialog}
-      onClose=${onClose}
-      header=${app.name}
-      children=${html`<${HtmlBlock} html=${contents} />`}
-    />
-  `;
+  return html`<${HtmlBlock} html=${contents} />`;
 }

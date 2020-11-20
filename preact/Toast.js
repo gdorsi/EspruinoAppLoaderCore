@@ -28,11 +28,7 @@ export function Toast() {
 
   if (!state) return null;
 
-  const { msg, type = "primary" } = state;
+  const { msg } = state;
 
-  if (!["success", "error", "warning", "primary"].includes(type)) {
-    console.log("showToast: unknown toast " + type);
-  }
-
-  return html`<div class="Toast toast-${type}">${msg}</div>`;
+  return html`<div class="Toast">${msg}</div>`;
 }

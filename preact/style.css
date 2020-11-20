@@ -29,7 +29,7 @@
 }
 
 *:focus-visible {
-  outline: -webkit-focus-ring-color auto 1px;
+  outline: black auto 2px;
 }
 
 button,
@@ -153,6 +153,17 @@ body {
   border-radius: var(--spc-3x);
 }
 
+.AppDetail__section {
+  border-top: 1px solid var(--primary-color);
+}
+
+.AppDetail__sectionTitle {
+  font-family: var(--title-font);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: var(--spc-3x) 0;
+}
+
 .AppDetail__title {
   font-family: var(--title-font);
   font-weight: 600;
@@ -253,6 +264,22 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.ChangeLog {
+  font-family: var(--font);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.ChangeLog__change {
+  margin-bottom: var(--spc-1-5x);
+}
+
+.ChangeLog__change:last-child {
+  margin-bottom: 0;
+}
+
 .Chip {
   display: inline-block;
   padding: var(--spc-1-5x) var(--spc-3x);
@@ -307,6 +334,8 @@ body {
   flex-direction: column;
   max-width: calc(var(--spc) * 180);
   width: 100%;
+  /* max-height: 90vh; */
+  /* overflow: auto; */
 }
 
 .Dialog__close {
@@ -366,9 +395,6 @@ body {
   background: #2c2ac0;
   border-radius: var(--spc-1-5x);
   padding: var(--spc-2x) var(--spc-3x);
-  display: grid;
-  grid-gap: var(--spc-1-5x);
-  grid-auto-flow: column;
   align-items: center;
   flex-grow: 1;
   justify-content: left;
@@ -377,6 +403,7 @@ body {
 .Header__search input {
   flex-grow: 1;
   color: white;
+  margin-left: var(--spc-1-5x)
 }
 
 .Header__search input::placeholder {

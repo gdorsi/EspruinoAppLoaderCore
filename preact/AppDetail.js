@@ -1,7 +1,5 @@
 import { PreInstallWizardDialog } from "./PreInstallWizardDialog.js";
 import { usePrompt } from "./Dialog.js";
-import { EmulatorDialog } from "./Emulator.js";
-import { AppReadmeDialog } from "./AppReadme.js";
 import { AppInterfaceDialog } from "./AppInterface.js";
 import { HtmlBlock } from "./HtmlBlock.js";
 import { useAppInstaller } from "./useAppInstaller.js";
@@ -11,16 +9,17 @@ import { Button } from "./Button.js";
 import { IconHeart, IconOpenExternalLink } from "./Icons.js";
 import { Dialog } from "./Dialog.js";
 import { AppVersion } from "./AppVersion.js";
+import { AppChangelog } from "./AppChangelog.js";
 
 export function AppDetail({ onClose, app }) {
   const installer = useAppInstaller();
 
   const installWizardPrompt = usePrompt(installer.install);
   const appInterfacePrompt = usePrompt();
-  const emulatorPrompt = usePrompt();
-  const readmePrompt = usePrompt();
 
   const { description, categories, avatar, canUpdate, appInstalled } = app;
+
+
 
   const body = html`<article class="AppDetail">
     <header class="AppDetail__header">
@@ -70,7 +69,10 @@ export function AppDetail({ onClose, app }) {
     <main class="AppDetail__description">
       <${HtmlBlock} as="div" html="${description}" />
     </main>
-    <footer class="AppCard__content"></footer>
+    <div class="AppDetail__section">
+      <div class="AppDetail__sectionTitle">Changelog</div>
+      <${AppChangelog} app=${app} />
+    </div>
     ${installWizardPrompt.isOpen &&
     html`<${PreInstallWizardDialog}
       app=${app}
@@ -82,10 +84,6 @@ export function AppDetail({ onClose, app }) {
       app=${app}
       onClose=${appInterfacePrompt.onClose}
     />`}
-    ${emulatorPrompt.isOpen &&
-    html`<${EmulatorDialog} app=${app} onClose=${emulatorPrompt.onClose} />`}
-    ${readmePrompt.isOpen &&
-    html`<${AppReadmeDialog} app=${app} onClose=${readmePrompt.onClose} />`}
   </article> `;
 
   return html` <${Dialog} onClose=${onClose}>${body}<//> `;

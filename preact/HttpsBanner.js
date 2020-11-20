@@ -10,16 +10,14 @@ export function HttpsBanner() {
   if (location.href.startsWith("https") || location.hostname === "localhost")
     return null;
 
-  return html`<div class="container" style="padding-top:4px">
-    <p>
-      <b>STOP!</b> This page <b>must</b> be served over HTTPS. Please
-      <a
-        href="#https"
-        onClick=${() => {
-          location.href = location.href.replace(`http://`, "https://");
-        }}
-        >reload this page via HTTPS</a
-      >.
-    </p>
+  return html`<div class="Toast">
+    <b>STOP!</b> This page <b>must</b> be served over HTTPS. Please
+    <a
+      href="#https"
+      onClick=${() => {
+        location.href = location.href.replace(`http://`, "https://");
+      }}
+      >reload this page via HTTPS</a
+    >
   </div>`;
 }

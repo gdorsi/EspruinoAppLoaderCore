@@ -18,8 +18,8 @@ function Main() {
   const activeTab = "library"; //TODO Router
 
   return html`<${Header} />
-    <${HttpsBanner} />
     <div class="ToastContainer">
+      <${HttpsBanner} />
       <${Toast} />
       <${ProgressBar} />
     </div>

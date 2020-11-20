@@ -1,7 +1,5 @@
 import { PreInstallWizardDialog } from "./PreInstallWizardDialog.js";
 import { usePrompt } from "./Dialog.js";
-import { EmulatorDialog } from "./Emulator.js";
-import { AppReadmeDialog } from "./AppReadme.js";
 import { AppInterfaceDialog } from "./AppInterface.js";
 import { HtmlBlock } from "./HtmlBlock.js";
 import { useAppInstaller } from "./useAppInstaller.js";
@@ -17,8 +15,6 @@ export function AppCard({ app }) {
 
   const installWizardPrompt = usePrompt(installer.install);
   const appInterfacePrompt = usePrompt();
-  const emulatorPrompt = usePrompt();
-  const readmePrompt = usePrompt();
   const detailDialog = usePrompt();
 
   const { description, mainCategory, avatar, canUpdate, appInstalled } = app;
@@ -36,7 +32,7 @@ export function AppCard({ app }) {
     <header class="AppCard__header">
       <img class="AppCard__avatar" src=${avatar} alt=${app.name} />
       <div class="AppCard__actions">
-        <button class="Button Button--rounded Button--active"><${IconHeart} /></button>
+        <${Button} rounded active><${IconHeart} /><//>
       </div>
     </header>
     <div class="AppCard__title">${app.name} <${AppVersion} app=${app} /></div>
@@ -79,10 +75,6 @@ export function AppCard({ app }) {
       app=${app}
       onClose=${appInterfacePrompt.onClose}
     />`}
-    ${emulatorPrompt.isOpen &&
-    html`<${EmulatorDialog} app=${app} onClose=${emulatorPrompt.onClose} />`}
-    ${readmePrompt.isOpen &&
-    html`<${AppReadmeDialog} app=${app} onClose=${readmePrompt.onClose} />`}
     ${detailDialog.isOpen &&
     html`<${AppDetail} app=${app} onClose=${detailDialog.onClose} />`}
   </article> `;
